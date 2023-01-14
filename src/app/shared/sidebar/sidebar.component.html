@@ -1,0 +1,40 @@
+<aside class="left-sidebar">
+  <!-- Sidebar scroll-->
+  <div class="scroll-sidebar ps ps--theme_default ps--active-y" data-ps-id="40a4dc7f-4d55-4d28-b29b-4cbc6701e847">
+      <!-- Sidebar navigation-->
+      <nav class="sidebar-nav active">
+          <ul id="sidebarnav" class="in">
+              <li class="user-profile"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                <img [src]="usuario.img! | imagen : 'usuarios'" alt="user">
+                <span class="hide-menu">{{usuario.nombre}} </span></a>
+                  <ul aria-expanded="false" class="collapse">
+                      <li><a href="javascript:void()">My Profile </a></li>
+                      <li><a href="javascript:void()">My Balance</a></li>
+                      <li><a href="javascript:void()">Inbox</a></li>
+                      <li><a href="javascript:void()">Account Setting</a></li>
+                      <li><a href="javascript:void()">Logout</a></li>
+                  </ul>
+              </li>
+              <li class="nav-devider"></li>
+              <li class="nav-small-cap">PERSONAL</li>
+
+              <li *ngFor="let item of sideBarMenu">
+                <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                  <i class="mdi mdi-gauge"></i><span class="hide-menu">{{item.title}}
+                    <span class="label label-rouded label-themecolor pull-right">{{item.submenu.length}} </span>
+                  </span></a>
+                <ul aria-expanded="false" class="collapse">
+                    <li *ngFor="let subitem of item.submenu" >
+                      <a [routerLink]="subitem.path" > {{subitem.subtitle}}</a>
+                    </li>
+
+                </ul>
+              </li>
+
+
+          </ul>
+      </nav>
+      <!-- End Sidebar navigation -->
+  <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__scrollbar-y-rail" style="top: 0px; height: 460px; right: 0px;"><div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 217px;"></div></div></div>
+  <!-- End Sidebar scroll-->
+</aside>

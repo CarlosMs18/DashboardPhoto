@@ -1,0 +1,84 @@
+
+<div class="row">
+  <div class="col-md-6">
+      <div class="card">
+          <div class="card-body">
+              <h4 class="card-title">Mi Perfil de Usuario</h4>
+              <h6 class="card-subtitle">Ajustes</h6>
+              <form
+              [formGroup] = perfilForm
+              (ngSubmit)="enviarPerfil()"
+              class="form p-t-20" >
+                  <div class="form-group">
+                      <label for="exampleInputuname">User Name</label>
+                      <div class="input-group">
+                          <div class="input-group-addon"><i class="ti-user"></i></div>
+                          <input type="text"
+                          formControlName="nombre"
+                           class="form-control"
+                            id="exampleInputuname"
+                             placeholder="Nombre del usuario">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <div class="input-group">
+                          <div class="input-group-addon"><i class="ti-email"></i></div>
+                          <input type="email"
+                          class="form-control"
+                           id="exampleInputEmail1"
+                           formControlName="email"
+                            placeholder="Email">
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col text-danger">
+                      <p *ngIf="campoValido('nombre')" >El nombre es obligatorio</p>
+                      <p *ngIf="campoValido('email')">El email es obligatorio y tiene que ser valido</p>
+                     <!--  <p *ngIf="campoValido('nombre')" >El nombre es obligatorio</p>
+                      <p *ngIf="campoValido('email')">El email es obligatorio y tiene que ser valido</p>
+                      <p *ngIf="constraseniasValidas()">Las contraseñas deben de ser iguales</p>
+                      <p  *ngIf="validTerminos()" >Debe de aceptar los terminos de uso</p> -->
+                  <!--
+
+                     -->
+
+                    </div>
+                  </div>
+
+
+                  <button type="submit"
+                   class="btn btn-success btn-block waves-effect waves-light m-r-10"
+                    [disabled]="perfilForm.invalid"
+                   >Guardar Cambios
+                      <i class="fa fa-save"></i>
+                  </button>
+              </form>
+          </div>
+      </div>
+  </div>
+      <div class="col-md-6">
+          <div class="card">
+              <div class="card-body">
+                  <h4 class="card-title">Avatar</h4>
+                  <h6 class="card-subtitle">Imagen del Usuario</h6>
+                 <!--  <img class="img-avatar">
+                  <img class="img-avatar"> -->
+
+                  <input type="file"
+                      (change) = "cambiarImagen($any($event.target).files[0])"
+                  >
+
+                  <br>
+                  <br>
+
+                  <button type="button"
+                    [disabled]="!imagenSubir"
+                    (click)="subirImagen()"
+                   class="btn btn-success btn-block waves-effect waves-light m-r-10">Cambiar Imagen
+                      <i class="fa fa-save"></i>
+                  </button>
+              </div>
+          </div>
+      </div>
+  </div>
