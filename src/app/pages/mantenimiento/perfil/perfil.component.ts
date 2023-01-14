@@ -8,6 +8,7 @@ import { AuthService } from '../../../services/auth.service';
 import { FileUploadsService } from '../../../services/file-uploads.service';
 
 import { userResponseI } from '../../../interfaces/registerResponse.interface';
+import { usuarioGetI } from '../../../interfaces/usuarioGet.interface';
 
 @Component({
   selector: 'app-perfil',
@@ -16,16 +17,17 @@ import { userResponseI } from '../../../interfaces/registerResponse.interface';
   ]
 })
 export class PerfilComponent implements OnInit {
-    public usuario !: userResponseI;
+    public usuario !: usuarioGetI;
     private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     public perfilForm!: FormGroup;
     public imagenSubir!: File
-
+    public imgTemp : any
     constructor(
       private router : Router,
       private fb : FormBuilder,
       private authService : AuthService,
-      private fileUploadService : FileUploadsService
+      private fileUploadService : FileUploadsService,
+
     ){
       this.usuario = this.authService.usuario;
     }
@@ -47,14 +49,37 @@ export class PerfilComponent implements OnInit {
 
     cambiarImagen(file : File){
        this.imagenSubir =  file
+       if(!file){
+        return this.imgTemp = null;
+       }
+
+       const reader = new FileReader();
+       reader.readAsDataURL(file);
+
+       reader.onloadend = () =>{
+        this.imgTemp = reader.result;
+        console.log(reader.result);
+       }
     }
 
 
     subirImagen(){
       this.fileUploadService.actualizarFoto(this.imagenSubir, 'usuarios',this.usuario.uid)
-          .then(resp => console.log(resp))
-          .catch(err => console.log(err))
-    }
+            .then(img =>{
+
+              if(img){
+                this.usuario.img = img;
+                Swal.fire('Guardado' ,'Imagen Actualizada correctamene','success')
+              }else{
+                Swal.fire({ title: 'Error', text: 'Debe ser una imagen (png, jpg, jpeg)', icon: 'error' });
+              }
+
+
+            })
+        }
+
+     /*     */
+
 
     enviarPerfil(){
       if(this.perfilForm.invalid){

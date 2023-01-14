@@ -65,6 +65,12 @@
                  <!--  <img class="img-avatar">
                   <img class="img-avatar"> -->
 
+                  <div class="text-center">
+                   <img *ngIf="!imgTemp" [src]="usuario.img! | imagen :'usuarios'" class="img-avatar">
+
+                    <img *ngIf="imgTemp"  [src]="imgTemp"class="img-avatar">
+                  </div>
+
                   <input type="file"
                       (change) = "cambiarImagen($any($event.target).files[0])"
                   >
