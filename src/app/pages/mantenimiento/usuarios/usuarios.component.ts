@@ -1,10 +1,12 @@
 import Swal from 'sweetalert2';
-import { Component ,OnInit } from '@angular/core';
+import { Component ,OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { userResponseI } from '../../../interfaces/registerResponse.interface';
 import { usuarioGetI } from '../../../interfaces/usuarioGet.interface';
 
 import { BuscadorService } from '../../../services/buscador.service';
+import { ModalImagenService } from '../../../services/modal-imagen.service';
+import { delay, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-usuarios',
@@ -12,24 +14,38 @@ import { BuscadorService } from '../../../services/buscador.service';
   styles: [
   ]
 })
-export class UsuariosComponent implements OnInit {
+export class UsuariosComponent implements OnInit , OnDestroy{
   public usuariosGet : usuarioGetI[] = [];
   public usuariosTemp : usuarioGetI[] = [];
   public totalUsuarios : number = 0;
+  public imgSubs!: Subscription;
   public cargando : boolean = true;
   public desde : number = 0;
 
 
   constructor(
     private authService : AuthService,
-    private buscadorService : BuscadorService
+    private buscadorService : BuscadorService,
+    private modalImagenService: ModalImagenService
   ){
 
 
 
   }
+  ngOnDestroy(): void {
+     this.imgSubs.unsubscribe();
+  }
   ngOnInit(){
     this.getUsuarios();
+    this.imgSubs = this.modalImagenService.nuevaImagen
+     .pipe(
+      delay(100)
+     )
+    .subscribe(img => {
+
+      console.log(img)
+      this.getUsuarios()
+    })
   }
 
   buscarTermino(valor : string){
@@ -120,4 +136,9 @@ export class UsuariosComponent implements OnInit {
 
   }
 
+
+  abrirModal(usuario : usuarioGetI){
+    console.log(usuario);
+    this.modalImagenService.abrirModal('usuarios',usuario.uid,usuario.img);
+  }
 }

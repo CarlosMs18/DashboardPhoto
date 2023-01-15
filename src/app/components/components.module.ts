@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AumentadorComponent } from './aumentador/aumentador.component';
 import { FormsModule } from '@angular/forms';
 import { ModalImagenComponent } from './modal-imagen/modal-imagen.component';
+import { ImagenModule } from '../pipes/imagen.module';
 
 
 
@@ -13,7 +14,8 @@ import { ModalImagenComponent } from './modal-imagen/modal-imagen.component';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    ImagenModule
   ],
   exports : [
     AumentadorComponent,

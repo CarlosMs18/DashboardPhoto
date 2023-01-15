@@ -49,7 +49,12 @@
                     <tbody>
                         <tr *ngFor="let usuario of usuariosGet">
                             <td>
-                              <img [src]="usuario.img! | imagen : 'usuarios'"   alt="Avatar del usuario" class="w100 avatar">
+                              <img
+                              [src]="usuario.img! | imagen : 'usuarios'"
+                              alt="Avatar del usuario"
+                               class="w100 avatar"
+                               (click)="abrirModal(usuario)"
+                               >
                             </td>
                             <td> {{usuario.email}}  </td>
                             <td> {{usuario.nombre}}  </td>
