@@ -38,9 +38,9 @@ export class UsuariosComponent implements OnInit {
     }
     this.buscadorService.buscar(valor, 'usuarios')
           .subscribe({
-            next : ({ok, resultados})=> {
+            next : ({ok , resultados})=> {
 
-                this.usuariosGet =resultados
+                this.usuariosGet =resultados as usuarioGetI[]
 
             }
           })

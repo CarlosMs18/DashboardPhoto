@@ -2,19 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AumentadorComponent } from './aumentador/aumentador.component';
 import { FormsModule } from '@angular/forms';
+import { ModalImagenComponent } from './modal-imagen/modal-imagen.component';
 
 
 
 @NgModule({
   declarations: [
-    AumentadorComponent
+    AumentadorComponent,
+    ModalImagenComponent
   ],
   imports: [
     CommonModule,
     FormsModule
   ],
   exports : [
-    AumentadorComponent
+    AumentadorComponent,
+    ModalImagenComponent
   ]
 })
 export class ComponentsModule { }

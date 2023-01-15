@@ -13,6 +13,7 @@ import { SharedModule } from '../shared/shared.module';
 import { PagesComponent } from './pages.component';
 import { UsuariosComponent } from './mantenimiento/usuarios/usuarios.component';
 import { PerfilComponent } from './mantenimiento/perfil/perfil.component';
+import { HospitalesComponent } from './mantenimiento/hospitales/hospitales.component';
 
 
 
@@ -23,7 +24,8 @@ import { PerfilComponent } from './mantenimiento/perfil/perfil.component';
     ProgressComponent,
     PagesComponent,
     UsuariosComponent,
-    PerfilComponent
+    PerfilComponent,
+    HospitalesComponent
   ],
   imports: [
     CommonModule,
