@@ -7,6 +7,8 @@ import { UsuariosComponent } from './mantenimiento/usuarios/usuarios.component';
 import { PerfilComponent } from './mantenimiento/perfil/perfil.component';
 import { HospitalesComponent } from './mantenimiento/hospitales/hospitales.component';
 import { AdminGuard } from '../guards/admin.guard';
+import { MedicosComponent } from './mantenimiento/medicos/medicos.component';
+import { MedicoComponent } from './mantenimiento/medicos/medico.component';
 
 
 
@@ -18,6 +20,8 @@ const childRoutes: Routes = [
   /* MANTENIMIENTO */
   {path : 'usuarios', canActivate : [AdminGuard] , component : UsuariosComponent, data : {title : 'Mantenimiento Usuarios'}},
   {path : 'hospitales' ,canActivate : [AdminGuard], component : HospitalesComponent , data : {title : 'Hospitales'}},
+  {path : 'medicos', canActivate : [AdminGuard],  component : MedicosComponent, data : {title : 'Medicos'}},
+  {path : 'medicos/:id', canActivate : [AdminGuard],  component : MedicoComponent, data : {title : 'Medico'}},
   {path : 'perfil',component : PerfilComponent, data : {title : 'Perfil'}}
 ];
 

@@ -14,6 +14,8 @@ import { PagesComponent } from './pages.component';
 import { UsuariosComponent } from './mantenimiento/usuarios/usuarios.component';
 import { PerfilComponent } from './mantenimiento/perfil/perfil.component';
 import { HospitalesComponent } from './mantenimiento/hospitales/hospitales.component';
+import { MedicosComponent } from './mantenimiento/medicos/medicos.component';
+import { MedicoComponent } from './mantenimiento/medicos/medico.component';
 
 
 
@@ -25,7 +27,9 @@ import { HospitalesComponent } from './mantenimiento/hospitales/hospitales.compo
     PagesComponent,
     UsuariosComponent,
     PerfilComponent,
-    HospitalesComponent
+    HospitalesComponent,
+    MedicosComponent,
+    MedicoComponent
   ],
   imports: [
     CommonModule,

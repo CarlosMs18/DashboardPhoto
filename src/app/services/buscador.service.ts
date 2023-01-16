@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { usuarioGetI } from '../interfaces/usuarioGet.interface';
 import { hospitalGetI } from '../interfaces/hospitalResponse.interface';
+import { medicoInterface } from '../interfaces/medicoResponse.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class BuscadorService {
     }
   }
   buscar(termino : string, tipo : 'usuarios' | 'hospitales' | 'medicos'){
-      return this.http.get<{ok : boolean, resultados : usuarioGetI[] | hospitalGetI[]}>
+      return this.http.get<{ok : boolean, resultados : usuarioGetI[] | hospitalGetI[] | medicoInterface[]}>
           (`${this.base_url}/todo/coleccion/${tipo}/${termino}`,this.getHeaders)
 
 

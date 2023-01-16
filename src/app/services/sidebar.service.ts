@@ -19,7 +19,7 @@ export class SidebarService {
       submenu :[
         {path : 'usuarios', subtitle : 'Usuarios'},
         {path : 'hospitales', subtitle : 'Hospitales'},
-
+        {path : 'medicos',subtitle : 'Medicos'},
         {path : 'perfil', subtitle : 'Perfil'},
       ]
     }
